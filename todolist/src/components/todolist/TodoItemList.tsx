@@ -1,19 +1,28 @@
-import React from "react";
+import React, {useEffect, useMemo} from "react";
 import TodoItem from "./TodoItem";
 
 function TodoItemList({todos, onToggle, onRemove} : any) {
 
-    return (
-        <div>
+    const render = () => {
+        return (
             <div>
-                {
-                    todos.map((item : {}, idx: number) => (
-                        <TodoItem key={idx} {...item} onToggle={onToggle} onRemove={onRemove}></TodoItem>
-                    ))
-                }
+                <div>
+                    {
+                        todos.map((item : {}, idx: number) => (
+                            <TodoItem key={idx} {...item} onToggle={onToggle} onRemove={onRemove}></TodoItem>
+                        ))                                  
+                    }
+                </div>
             </div>
-        </div>
+        )
+    }
 
+    const memorizationRender = useMemo(() => {
+        return render();
+    }, [todos]) 
+
+    return (
+        memorizationRender
     )
 }
 

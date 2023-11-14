@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import '../../style/TodoItem.css'
 
 function TodoItem ({content, isComplete, onToggle, onRemove, id}: any) {
+    
     return (
         <div id={id} className="todo-item" onClick={() => onToggle(id)}>
             <div className="todo-item-remove" onClick={(e) => {

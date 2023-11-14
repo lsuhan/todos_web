@@ -1,7 +1,7 @@
 import './App.css';
 import TodoListTemplate from './components/todolist/TodoListTemplate';
 import Form from './components/todolist/Form';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect , useMemo } from 'react';
 import TodoItemList from './components/todolist/TodoItemList';
 import uuid from 'react-uuid';
 
@@ -14,7 +14,9 @@ function App() {
       setInput(e.target.value);
   }
 
+
   const onCreateHandler = () => {
+
     if(input === "") {
       alert("오늘 할 일을 입력해주세요.");
       return;
@@ -61,7 +63,6 @@ function App() {
     setTodos(todos.filter(item => item.id !== id))
     
   }
-
 
   return (
    <div>
